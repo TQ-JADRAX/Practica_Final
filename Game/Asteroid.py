@@ -1,7 +1,7 @@
 import pygame
 import random
-from main import *
-from Pesonaje import *
+
+from Player import *
 
 ANCHO = 800
 ALTO = 600
