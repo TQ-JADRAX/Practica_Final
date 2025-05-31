@@ -7,7 +7,13 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.Surface((10, 10), pygame.SRCALPHA)
         pygame.draw.circle(self.image, (255, 255, 255), (5, 5), 5)
         self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
+        
+        # Calcular la posición inicial de la bala en la punta de la nave
+        # La nave tiene un tamaño de 50x50, así que usamos 25 como distancia desde el centro
+        distancia = 25  # Distancia desde el centro de la nave
+        self.rect.centerx = x + math.cos(math.radians(angle)) * distancia
+        self.rect.centery = y - math.sin(math.radians(angle)) * distancia
+        
         self.velocidad = 10
         self.angulo = angle
         self.tiempo_vida = 60  # Duración en frames (aproximadamente 1 segundo a 60 FPS)
